@@ -5,11 +5,14 @@ package org.sprbuilder;
  */
 public class CoronaDesinfector {
 
+    private Announcer announcer = ObjectFactory.getInstance().createObject(Announcer.class);
+    private Policeman policeman = ObjectFactory.getInstance().createObject(Policeman.class);
+
     public void start(Room room) {
-        // TODO: сообщить всем присутствующим в комнате о начале дезинфекции и попросить всех свалить.
-        // TODO: разогнать всех, кто не вышел после объявления.
+        announcer.announce("Начинаем дезинфекцию, все вон.");
+        policeman.makePeopleLeaveRoom();
         desinfect(room);
-        // TODO: сообщить всем, что можно вернуться.
+        announcer.announce("Рискните зайти обратно.");
     }
 
     private void desinfect(Room room) {
